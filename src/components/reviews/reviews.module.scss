@@ -1,0 +1,114 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/media-queries';
+
+.reviewModule {
+    @include flex-direction(column, 1.6rem);
+    @include flex-align(flex-start, stretch);
+
+    @include min(tablet) {
+        @include flex-direction(row, 3rem);
+    }
+}
+
+.profilePicContainer {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    width: 100%;
+
+    @include min(tablet) {
+        overflow: visible;
+        width: auto;
+    }
+      
+    &::after {
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+
+        @include min(tablet) {
+            display: none;
+        }
+    }
+
+    img {
+        position: absolute;
+        object-fit: cover;
+        z-index: -1;
+        width: 100%;
+        border-radius: 1.5rem;
+        box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
+
+        @include min(tablet) {
+            position: relative;
+            width: auto;
+            max-height: 61.9rem;
+        }
+    }
+}
+
+.profileDetails {
+    @include flex-direction(column);
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.6rem;
+    backdrop-filter: blur(10px);
+    color: #FAFAFA;
+    background-color: linear-gradient(180deg, rgba(31, 122, 140, 0.25) 5.78%, rgba(2, 43, 58, 0.5) 57.6%, rgba(2, 43, 58, 0.8) 100%);
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    font-weight: 500;
+}
+
+.reviewHeader {
+    @include flex-align(center, space-between);
+}
+
+.addReviewButton {
+    @include flex-align(center, center);
+    background: #1F7A8C;
+    color: #FAFAFA;
+    height: 3.3rem;
+    min-width: 3.3rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+
+    @include min(tablet) {
+    padding: 0.5rem 1rem;
+    }
+
+    span {
+        display: none;
+
+        @include min(tablet) {
+            display: flex;
+        }
+    }
+}
+
+.reviewContents {
+    @include flex-direction(column, 1.6rem);
+    flex: 1;
+    width: 100%;
+}
+
+.reviewDetails {
+    @include flex-direction(column, 1.6rem);
+}
+
+.review {
+    @include flex-align(center, flex-start, 1.6rem);
+    flex-wrap: wrap;
+    background: #F5F5F5;
+    border: 1px solid #D1D1D1;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    padding: 1.6rem 2.4rem;
+    border-radius: 0.8rem;
+    
+    p {
+        flex-basis: 100%;
+    }
+}

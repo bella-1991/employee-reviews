@@ -1,0 +1,46 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/media-queries';
+
+.starRatingContainer {
+    @include flex-direction(row);
+    @include flex-align(center, center, 0.2rem);
+    background-color: #f4f4f4;
+    border-radius: 10rem;
+    min-width: 6.5rem;
+    min-height: 2.1rem;
+    line-height: 2.1rem;
+    color: var(--base-bg-color-dark);
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin: 0 0.33rem;
+    line-height: 2.4rem;
+    padding: 0.4rem 1rem;
+    flex-shrink: 0;
+  
+    > svg {
+      color: var(--icons-rating-color, #FFDB20);
+      width: 23.35px;
+      height: 22.26px;
+      flex: none;
+      margin-right: 6.32px;
+    }
+  
+    &.inactive {
+      .fullStar {
+        @include star(var(--empty-star-border-color), var(--empty-star-border-color), unset, 2.1rem);
+      }
+    }
+}
+  
+.fullStar {
+    @include star(var(--full-star-fill-color), var(--full-star-border-color), unset, 2.1rem);
+    margin-right: 1rem;
+}
+  
+.text {
+    color: #17182f;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin: 0 0.33rem;
+    line-height: 2.1rem;
+}
