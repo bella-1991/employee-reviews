@@ -1,0 +1,66 @@
+*:focus {outline:none !important}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+figure {
+  margin: 0;
+}
+
+p {
+  @include text-reset();
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  @include text-reset();
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+button {
+  background: transparent;
+  color: inherit;
+  border-width: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+table {
+  table-layout: fixed;
+  border: {
+    collapse: collapse;
+    spacing: 0;
+  }
+}
+
+ul,
+ol,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input {
+  padding: 0;
+  border: 0;
+}
+
+// Remove "x" on text inputs
+input[type='text']::-ms-clear,
+input[type='text']::-ms-reveal,
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}

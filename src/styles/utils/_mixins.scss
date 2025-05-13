@@ -1,0 +1,174 @@
+/* autoprefixer grid: autoplace */
+
+// Clearfix
+@mixin clearfix() {
+    &:before,
+    &:after {
+      content: ' ';
+      display: table; 
+    }
+    &:after {
+      clear: both;
+    }
+}
+
+// Border radius variants
+@mixin border-radius($radius) {
+    border-radius: $radius;
+}
+
+// Box sizing
+@mixin box-sizing($boxmodel) {
+    box-sizing: $boxmodel;
+}
+
+// Transitions
+@mixin transition($property) {  
+  transition: $property ease-in-out 0.2s;
+}
+
+@mixin text-reset {
+  word-break: break-word;
+  margin: 0;
+}
+
+// functions
+
+// commons
+@mixin flex-align($align-items, $justify-content, $gap: 0.8rem) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+  gap: $gap;
+}
+
+@mixin flex-direction($flex-direction, $gap: 0.8rem) {
+  display: flex;
+  flex-direction: $flex-direction;
+  gap: $gap;
+}
+
+@mixin container {
+  max-width: var(--main-container-max);
+  margin: 0 auto;
+  width: 100%;
+  padding: 1.6rem;
+}
+
+
+@mixin star($border-color: #ffb400, $fill-color: #ffb400, $width: 16px, $line-height: 2rem) {
+  line-height: $line-height;
+  width: $width;
+  font-weight: normal;
+  display: inline-block;
+  color: $fill-color;
+  font-size: 15px;
+  position: relative;
+  text-shadow: -1px 0 $border-color, 0 1px $border-color, 1px 0 $border-color, 0 -1px $border-color;
+
+  &:last-child {
+    margin-right: 0;
+  }
+  &:before {
+    content: '\2605';
+  }
+}
+
+@mixin half-star($border-color: #ffb400, $half-empty-color: #ffb400, $half-full-color: white) {
+  line-height: 2rem;
+  width: 16px;
+  font-weight: normal;
+  display: inline-block;
+  color: $half-full-color;
+  font-size: 15px;
+  position: relative;
+  &:before {
+    content: '\2605';
+  }
+  text-shadow: -1px 0 $border-color, 0 1px $border-color, 1px 0 $border-color, 0 -1px $border-color;
+  &:after {
+    content: '\2605';
+    color: $half-empty-color;
+    position: absolute;
+    width: 7px;
+    overflow: hidden;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@mixin buttonsCommon() {
+  @include flex-align(center, center);
+  white-space: nowrap;
+  border-radius: 1.6rem;
+  padding: 1rem 3rem;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+
+  @include min(tablet) {
+    line-height: 3rem;
+    font-size: 2rem;
+  }
+}
+
+@mixin border-gradient($color-1, $color-2, $bgcolor, $radius: 0.8rem, $border-width: 2px) {
+  background: $bgcolor;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: $radius;
+    border: $border-width solid transparent;
+    background: $color-1, $color-2 border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+}
+
+@mixin arrow($color, $size, $orientation, $solid: true, $transform: '') {
+  content: '';
+
+  $rotation_right: 90deg;
+  $rotation_down: 180deg;
+  $rotation_left: -90deg;
+  $rotation: rotate(-135deg);
+
+  @if ($solid) {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  } @else {
+    $size:  calc($size/3);
+    border: solid $color;
+    border-width: 0 $size $size 0;
+    padding: $size;
+  }
+
+  $rotation_right: -45deg;
+  $rotation_down: 45deg;
+  $rotation_left: 135deg;
+
+  @if ($orientation == up) {
+    bottom: 100%;
+    left: calc(50% - #{$size});
+  } @else if ($orientation == right) {
+    $rotation: rotate($rotation_right);
+  } @else if ($orientation == down) {
+    $rotation: rotate($rotation_down);
+  } @else if ($orientation == left) {
+    $rotation: rotate($rotation_left);
+  }
+
+  @if ($transform != '') {
+    transform: $transform $rotation;
+  } @else {
+    transform: $rotation;
+  }
+}

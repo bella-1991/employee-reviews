@@ -1,0 +1,110 @@
+$media-query-sizes: (
+  mobile-s: (
+    min: 320px,
+    max: 374px,
+  ),
+  mobile-m: (
+    min: 375px,
+    max: 424px,
+  ),
+  mobile: (
+    min: 425px,
+    max: 767px,
+  ),
+  tablet: (
+    min: 768px,
+    max: 991px,
+  ),
+  laptop: (
+    min: 992px,
+    max: 1199px,
+  ),
+  desktop: (
+    min: 1200px,
+  ),
+  desktop-l: (
+    min: 1920px,
+  ),
+);
+
+// Get media query sizes
+$screen: 'only screen';
+@function media-query($media, $optional-media: '', $min: true) {
+  $media-label: '';
+
+  @if ($optional-media != '') {
+    $media-sizes-min: map-get($media-query-sizes, $media);
+    $media-sizes-max: map-get($media-query-sizes, $optional-media);
+    $media-label: $screen +
+      " and (min-width:#{map-get($media-sizes-min, 'min')}) and (max-width:#{map-get($media-sizes-max, 'max')})";
+  } @else {
+    $query: 'max';
+
+    @if ($min) {
+      $query: 'min';
+    }
+
+    $media-sizes: map-get($media-query-sizes, $media);
+    $media-label: $screen + ' and (#{$query}-width:#{map-get($media-sizes, $query)})';
+  }
+
+  @return $media-label;
+}
+
+// Min media query
+@mixin min($media) {
+  @media #{media-query($media)} {
+    @content;
+  }
+}
+
+// Max media query
+@mixin max($media) {
+  @media #{media-query($media, '', false)} {
+    @content;
+  }
+}
+
+// Min & max media query
+@mixin min-max($min, $max) {
+  @media #{media-query($min, $max)} {
+    @content;
+  }
+}
+
+// Use this ONLY if you need a media query that doesn't fit the $media-query-sizes breakpoints above
+// Pass number, for example @include custom-min(992)
+@mixin custom-min($min) {
+  @media #{$screen} and (min-width: #{$min}px) {
+    @content;
+  }
+}
+
+@mixin custom-max($max) {
+  @media #{$screen} and (max-width: #{$max}px) {
+    @content;
+  }
+}
+
+@mixin custom-min-max($min, $max) {
+  @media #{$screen} and (min-width: #{$min}px) and (max-width: #{$max}px) {
+    @content;
+  }
+}
+
+// Landscape
+// (If we find more use cases of this in the future, might want to refactor this and include it in the media-query function for $screen)
+// Pass number
+$landscape: 'screen and (orientation:landscape)';
+
+@mixin landscape-max($max) {
+  @media #{$landscape} and (max-width: #{$max}px) {
+    @content;
+  }
+}
+
+@mixin landscape-min($min) {
+  @media #{$landscape} and (min-width: #{$min}px) {
+    @content;
+  }
+}

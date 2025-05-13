@@ -1,0 +1,86 @@
+:root {
+    // Colors
+    --base-color:        #000000;
+    --base-bg-color-light:    #ffffff;
+    --base-bg-color-dark:     #000000;
+    --primary-color:     #a47c00;
+    --primary-color-gradiant: linear-gradient(180deg, #86D8FF 0.01%, #00ACFF 100%);
+
+    --main-container-max: 128rem;
+    --max-width-content: 96rem;
+
+    // Dynamic colours
+
+    //Font folder path
+    --font-path: "path/to/font";
+
+    // Typography
+    // Font, line-height, and color for body text, headings, and more.
+
+    --font-family-inter-thin:            "inter_thin";
+    --font-family-inter-extra-light:     "inter_extra_light";
+    --font-family-inter-light:           "inter_light";
+    --font-family-inter-regular:         "inter_regular";
+    --font-family-inter-medium:          "inter_medium";
+    --font-family-inter-semi-bold:       "inter_semi_bold";
+    --font-family-inter-bold:            "inter_bold";
+    --font-family-inter-extra-bold:      "inter_extra_bold";
+    --font-family-inter-black:           "inter_black";
+    --font-family-work-sans:             "work_sans";
+    --font-size-base:          1.6rem;
+    --font-size-h1:            4rem;
+    --font-size-h2:            3.2rem;
+    --font-size-h3:            2.8rem;
+    --font-size-h4:            2.4rem;
+    --font-size-h5:            2rem;
+    --font-size-h6:            1.6rem;
+    --line-height-base:        1.3;
+
+    --font-size-h1-mobile:     3.2rem;
+    --font-size-h2-mobile:     2.8rem;
+    --font-size-h3-mobile:     2.4rem;
+    --font-size-h4-mobile:     2rem;
+    --font-size-h5-mobile:     1.8rem;
+    --font-size-h6-mobile:     1.6rem;
+    
+    // Line heights - site
+    --h1-line-height: 4.8rem;
+    --h2-line-height: 4.8rem;
+    --h3-line-height: 3.6rem;
+    --h4-line-height: 3.2rem;
+    --h5-line-height: 2.8rem;
+    --h6-line-height: 2.4rem;
+  
+    --h1-mobile-line-height: 4rem;
+    --h2-mobile-line-height: 3.6rem;
+    --h3-mobile-line-height: 3.2rem;
+    --h4-mobile-line-height: 2.8rem;
+    --h5-mobile-line-height: 2.6rem;
+    --h6-mobile-line-height: 2.2rem;
+
+    // Small screen desktop
+    --screen-desktop:           1280px;
+    --screen-laptop:            992px;
+
+    // Tablet
+    --screen-tablet:              768px;
+
+    // Mobile
+    --screen-mobile:              480px;
+
+    // Layout
+    --gutter-size: 15px;
+
+    // helpers
+    --interact: '&:hover, &:focus, &:active';
+
+    // star rating
+    --full-star-fill-color: #fba62f;
+    --full-star-border-color: #fba62f;
+    --halfFull-star-fill-color: #fba62f;
+    --halfEmpty-star-fill-color: white;
+    --half-star-border-color: #fba62f;
+    --empty-star-fill-color: white;
+    --empty-star-border-color: grey;
+    --main-star-wrapper-color: #a5bcf0;
+}
