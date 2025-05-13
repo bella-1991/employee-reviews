@@ -1,0 +1,23 @@
+@import '../styles/utils/mixins';
+@import '../styles/utils/media-queries';
+
+.toast {
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    background: #BFDBF7;
+    border-radius: 0.6rem;
+    min-width: 31.4rem;
+    padding: 1.6rem;
+    align-self: center;
+    position: fixed;
+    bottom: 7rem;
+    z-index: 10;
+    margin: auto;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    @include min(tablet) {
+        min-width: 45rem;
+        bottom: 7rem;
+    }
+}

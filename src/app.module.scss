@@ -7,7 +7,7 @@
     max-width: 132rem;
     margin: 0 auto;
     padding: 0 1.6rem 2rem;
-    @include flex-direction(column);
+    @include flex-direction(column, 2.4rem);
 }
 
 .searchImgContainer {
