@@ -31,11 +31,15 @@ function App() {
   }, []);
 
   const handleSearch = (str) => {
-    console.log(str);
     if (str) {
       findEmployee(str);
     }
   };
+
+  const handleEmployeeSearch = (str) => {
+    setSearch(str);
+    setEmployee(null);
+  }
 
   const findEmployee = (id) => {
     const emp = employees.find((each) => each.id == id);
@@ -47,11 +51,11 @@ function App() {
     <div className="App">
       <Header
         search={search}
-        setSearch={setSearch}
+        setSearch={handleEmployeeSearch}
         handleSearch={handleSearch}
       />
       <main className={styles.main}>
-        {search ? (
+        {employee ? (
           <Reviews employee={employee} />
         ) : (
           <div className={styles.searchImgContainer}>
